@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>NVDA Stock Price Tracker - Historical Data</title>
+</head>
+<body>
+<h1>NVDA Stock Price Tracker - Historical Data</h1>
+<p>This page displays a graph of the NVDA stock price over time.</p>
+
+<div id="chart"></div>
+
+<script>
+// Function to create a chart of the historical stock data.
+function createChart(data) {
+// Create a new Highcharts chart.
+var chart = Highcharts.stockChart('chart', {
+title: {
+text: 'NVDA Stock Price Historical Data'
+},
+series: [{
+name: 'NVDA',
+data: data
+}]
+});
+}
+
+// Make an AJAX request to the stock price API to get the historical data.
+$.get('/historical-data', function(data) {
+// Create a chart of the historical data.
+createChart(data);
+});
+</script>
+</body>
+</html>
+
