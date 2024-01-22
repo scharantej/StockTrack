@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>NVDA Stock Price Tracker</title>
+</head>
+<body>
+<h1>NVDA Stock Price Tracker</h1>
+<p>This application allows you to track the stock price of NVIDIA Corporation (NVDA).</p>
+<p>Current Price: <span id="current-price"></span></p>
+<p>Historical Data: <a href="/historical">View Historical Data</a></p>
+
+<script>
+// Function to update the current stock price on the page.
+function updatePrice() {
+// Make an AJAX request to the stock price API.
+$.get('/stock-price', function(data) {
+// Update the current stock price on the page.
+$('#current-price').text(data.price);
+});
+}
+
+// Call the updatePrice function every 5 seconds.
+setInterval(updatePrice, 5000);
+</script>
+</body>
+</html>
+
+
